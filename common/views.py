@@ -21,3 +21,5 @@ def mypage(request):
     myquestion_list=Question.objects.filter(author = request.user)
     context = {'myquestion_list': myquestion_list}
     return render(request, 'common/mypage.html',context)
+def logout(request):
+    return redirect('hello:index')
