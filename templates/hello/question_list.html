@@ -1,0 +1,72 @@
+{% extends 'common/base.html'%}
+{% block content %}
+
+<div class = "container my-3">
+    <table class ="table">
+        <thead>
+        <tr class = "table-dark">
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if question_list %}
+        {% for question in question_list %}
+        <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>
+                <a href="{% url 'hello:detail' question.id %}">{{ question.subject }}</a>
+            </td>
+            <td>{{ question.author }}</td>
+            <td>{{ question.create_date }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">질문이 없습니다</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <!-- 추가부분(질문등록) -->
+    <a href="{% url 'hello:question_form'%}" class="btn btn-primary">질문등록하기</a>
+</div>
+{% endblock %}
+
+<!-- base.html 표현으로 바꾸기 전 -->
+<!-- {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<div class="container my-3">
+    <table class="table">
+        <thead>
+        <tr class="table-dark">
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if question_list %}
+        {% for question in question_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <a href="{% url 'hello:detail' question.id %}">{{ question.subject }}</a>
+            </td>
+            <td>{{ question.create_date }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3">질문이 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<div class="button-container">
+    <a href="question_registration.html" class = 'registartion-button'>게시글등록</a>
+</div> -->

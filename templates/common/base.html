@@ -1,0 +1,27 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- hello CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Hello, hello!</title>
+</head>
+<body>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<div>
+    <a href="{% url 'common:login' %}">로그인</a>
+    <a href="{% url 'common:signup' %}">회원가입</a>
+    <a href="{% url 'common:logout' %}">{{user.username}}</a>
+    <a href="{% url 'common:mypage' %}">마이페이지</a>
+</div>
+{% block content %}
+
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+</body>
+</html>
